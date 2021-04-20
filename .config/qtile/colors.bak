@@ -1,0 +1,21 @@
+#!/bin/bash
+
+wallpaper=`ls -1 /home/andrija/.config/qtile/wallpapers | rofi -dmenu` 
+
+while getopts ld option
+do
+  case "${option}"
+    in
+
+    l) 
+      wal -l -i /home/andrija/.config/qtile/wallpapers/$wallpaper && 
+      pywalfox update && pywal-discord 
+      cp -v /home/andrija/.cache/wal/colors.css /home/andrija/configs/startpage_extension/src/colors.css
+    ;;
+    d)
+      wal -i  /home/andrija/.config/qtile/wallpapers/$wallpaper &&
+      pywalfox update && pywal-discord && 
+      cp -v /home/andrija/.cache/wal/colors.css /home/andrija/configs/startpage_extension/src/colors.css
+    ;;
+esac
+done

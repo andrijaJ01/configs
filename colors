@@ -1,6 +1,6 @@
 #!/bin/bash
 
-wallpaper=`ls -1 .config/qtile/wallpapers | rofi -dmenu` 
+wallpaper=`ls -1 ./wallpapers | rofi -dmenu` 
 
 while getopts ld option
 do
@@ -8,10 +8,10 @@ do
     in
 
     l) 
-      wal -l -i .config/qtile/wallpapers/$wallpaper;;
+      wal -l -i ./wallpapers/$wallpaper;;
     
     d)
-      wal -i  .config/qtile/wallpapers/$wallpaper ;;
+      wal -i  ./wallpapers/$wallpaper ;;
     
 esac
 done
