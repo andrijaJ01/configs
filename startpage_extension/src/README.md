@@ -1,21 +1,5 @@
 <div align="center">
-<h1>grtcdr's startpages</h1>
-
-<a href="https://github.com/grtcdr/startpages/blob/master/LICENSE">
-    <img src="https://img.shields.io/github/license/grtcdr/startpages.svg" alt="License"/>
-</a>
-
-<a href="https://github.com/grtcdr/startpages/stargazers">
-    <img src="https://img.shields.io/github/stars/grtcdr/startpages.svg" alt="Stars"/>
-</a>
-
-<a href="https://github.com/grtcdr/startpages/network/members">
-    <img src="https://img.shields.io/github/forks/grtcdr/startpages.svg" alt="Forks"/>
-</a>
-
-<h4>A preview of one of the startpages</h4>
-
-<img src="startpage_7/preview.webp" alt="startpage_7 preview" />
+<h1>Andrija's startpage</h1>
 
 </div>
 
@@ -23,7 +7,7 @@
 
 ## 📝 Description <a name="description"></a>
 
-Each startpage folder contains: 
+this startpage contains: 
 - Source code within __src/__
 - Preview of the startpage
 - Brief description of the startpage
@@ -32,7 +16,12 @@ Each startpage folder contains:
 
 ## Set Startpage As New Tab Page <a name="set-startpage"></a>
 ### 🔨 Build & Sign The Extension
-I use `web-ext` to build and sign my startpage extensions, please note that any modifications you make to the startpages won't take effect unless the extension is rebuilt.
+I use `web-ext` to build and sign my startpage extension, please note that any modifications you make to the startpages won't take effect unless the extension is rebuilt.
+
+For development purposes you can run simple python http server:
+```
+python -m http.server -d /path/to/src/folder
+```
 
 🚨 Please note that this is **not the only way** to set my startpages as a new tab page, it is just the way I do it.
 
