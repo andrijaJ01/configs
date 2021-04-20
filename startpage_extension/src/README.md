@@ -25,7 +25,7 @@ python -m http.server -d /path/to/src/folder
 
 🚨 Please note that this is **not the only way** to set my startpages as a new tab page, it is just the way I do it.
 
-#### Prerequisites
+#### Requirements for building
 - [web-ext](https://github.com/mozilla/web-ext)
 
 Install from NPM:
@@ -38,28 +38,24 @@ Got GNU/Linux? It should be available in your distribution's repositories.
 #### Building The Extension
 In your terminal:
 
-1. Clone the repository:
+1. Clone the configs repository:
 ```
-git clone https://github.com/grtcdr/startpages
+git clone https://github.com/andrijaJ01/configs
 ```
-2. Jump inside the repository:
+2. Jump inside the startpage's src folder:
 ```
-cd startpages
+cd configs/startpage_extension/src
 ```
-3. Navigate inside the __src__ directory of your desired startpage. 
-Let's use _startpage_7_ as an example:
-```
-cd startpage_7/src
-```
-4. Sign the extension
+
+3. Sign the extension
 ```
 web-ext sign --api-key=$AMO_JWT_ISSUER --api-secret=$AMO_JWT_SECRET
 ```
 
 If all goes well during the signing process, you will discover that a new directory, `web-ext-artifacts` has appeared, and it contains a `.xpi` file.
 
-5. Open Firefox, type `about:addons` in the search bar and drag & drop the `.xpi` file into the window.
-6. Firefox will now prompt you to add the extension, click `Add`
+4. Open Firefox, type `about:addons` in the search bar and drag & drop the `.xpi` file into the window.
+5. Firefox will now prompt you to add the extension, click `Add`
 
 You're good to go, the startpage will now appear every time you open up a new tab page.
 
