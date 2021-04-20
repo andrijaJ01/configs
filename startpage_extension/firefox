@@ -1,0 +1,19 @@
+<h1>Screenshot of the startpage</h1>
+<p><img src="preview.webp" alt="Screenshot"></p>
+<h1>Important</h1>
+<p>After generating the colors with pywal copy:</p>
+<pre><code>colors.css
+</code></pre>
+<p>from /home/<USER>/.cache/wal src folder where index.html is located.</p>
+<p><strong>Main features:</strong></p>
+<ul>
+<li>Search engine selection</li>
+<li>Quick access to your favorite websites which include following by default:<ul>
+<li>duckduckgo</li>
+<li>google</li>
+<li>reddit</li>
+<li>youtube</li>
+</ul>
+</li>
+<li>Card-like list navigation</li>
+</ul>
