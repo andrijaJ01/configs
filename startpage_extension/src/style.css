@@ -1,0 +1,197 @@
+
+@import url('colors.css');
+*{
+box-sizing:border-box;
+}
+body {
+    background-color: var(--background);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    -moz-user-select: none;
+    padding: 0;
+    margin: 0;
+    height:100vh;
+}
+
+/*-------------------------------------------------------*/
+/* This part of the code takes care of styling the cards */
+/*-------------------------------------------------------*/
+.card_list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card_title {
+    padding-top:0;
+    margin-top:0;
+    font-size: 45px
+}
+.card {
+    display: flex;
+    margin: 0 1.1rem;
+    position: relative;
+    flex-direction: column;
+    min-height: 350px;
+    width: 300px;
+    text-align:center;
+    padding: 1.5rem;
+    border:2px solid var(--color1);
+    border-radius:1rem;
+    background-color:var(--background);
+}
+a:visited, a:link, a:active {
+    color: var(--color8);
+    height: auto;
+    width: auto;
+    text-decoration: none;
+    font-size: 25px;
+    line-height: 2;
+}
+a:hover {
+    text-shadow: 2px 2px 4px #1b1f26;
+}
+#watch > a:hover {
+    color: #bf616a
+}
+#social > a:hover {
+    color: #d08770
+}
+#dev > a:hover {
+    color: #ebcb8b
+}
+#linux > a:hover {
+    color: #a3be8c
+}
+#email > a:hover {
+    color: #b48ead
+}
+a:hover {
+    color: #88c0d0
+}
+
+/*Card name styling*/
+#w {
+    color: #bf616a
+}
+#s {
+    color: #d08770
+}
+#d {
+    color: #ebcb8b
+}
+#l {
+    color: #a3be8c
+}
+#e {
+    color: #b48ead
+}
+
+/*---------------------------------------------------------------------------------------------------------*/
+/* This part of the code takes care of styling the search engine icons, buttons, input box and go button.  */
+/*---------------------------------------------------------------------------------------------------------*/
+
+.search_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+  transition: box-shadow 0.5s;
+}
+input {
+    color: var(--foreground);
+    background-color: var(--barkground);
+    width: 700px;
+    text-align: center;
+    height: 50px;
+    font-size: 20px;
+    border: none;
+    vertical-align: top;
+    outline: none;
+    border-top:2px solid var(--color1);
+    border-bottom:2px solid var(--color1)
+}
+input:focus::placeholder {
+    color: transparent;
+}
+button {
+    width: 50px;
+    height: 50px;
+    background: var(--background);
+    vertical-align: top;
+    border: none;
+    color: var(--foreground);
+    transition: background-color 0.3s, color 0.3s;
+    border-top:2px solid var(--color1);
+    border-bottom:2px solid var(--color1);
+    border-right:2px solid var(--color1)
+}
+
+button.left{
+    border-right:none;
+    border-left:2px solid var(--color1)
+
+
+}
+
+
+button:hover {
+    background-color: var(--color1);
+    color: var(--foreground);
+}
+.go {
+    color:var(--color8);
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+    
+}
+.go:hover {
+    color:var(--foreground);
+}
+.se_btn {
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;  
+}
+#se_icon {
+    width: 24px;
+    height: 24px;
+}
+.filter-white {
+    filter: invert(1)
+}
+
+/*-------------------------------------------------------------------------*/
+/* This part of the code takes care of the styling the greeting, and time. */
+/*-------------------------------------------------------------------------*/
+
+#time {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    }
+
+/* "III" or "Tertius" is the name of this startpage*/
+h2 {
+    font-size: 28px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 10px;
+}
+.timezone{
+background:var(--color1);
+height:80px;
+margin: 30px 0 0 0;
+display:flex;
+font-size:18px;
+line-height:80px;
+padding:0;
+}
+.timezone h2{
+color:var(--foreground);
+margin:15px 15px -5px 15px; 
+}
+
+.timezone p{
+color:var(--foreground);
+}

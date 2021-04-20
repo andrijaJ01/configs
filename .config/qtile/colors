@@ -1,0 +1,21 @@
+#!/bin/bash
+
+wallpaper=`ls -1 ./wallpapers | rofi -dmenu` 
+
+while getopts ld option
+do
+  case "${option}"
+    in
+
+    l) 
+      # apply light theme
+      wal -l -i ./wallpapers/$wallpaper
+    ;;
+    d)
+      # apply dark theme
+      wal  -i ./wallpapers/$wallpaper
+    ;;
+esac
+done
+pywalfox update
+pywal-discord

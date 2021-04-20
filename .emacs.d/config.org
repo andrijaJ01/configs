@@ -1,0 +1,252 @@
+* Important
+to use an org file to config Emacs because I like literate configs with lots of comments.  The following code block should be your init.el.  This tells init.el to use the source code blocks from this file (config.org).
+#+begin_verse
+(org-babel-load-file
+ (expand-file-name
+  "config.org"
+  user-emacs-directory))
+#+end_verse
+* Trust all themes
+make emacs truest all custom themes.
+#+begin_src emacs-lisp
+(setq custom-safe-themes t)
+#+end_src
+this is to stop it from blocking loading of config to ask if you want to load theme.
+* PACKAGE MANAGEMENT
+** Setup package.el to work with MELPA
+#+begin_src emacs-lisp
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/"))
+(package-refresh-contents)
+(package-initialize)
+#+end_src
+
+** Installing use-package
+#+begin_src emacs-lisp
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+#+end_src
+
+* ALL THE ICONS
+#+begin_src emacs-lisp
+(use-package all-the-icons
+  :ensure t)
+#+end_src
+
+This is an icon set that can be used with dashboard, dired, ibuffer and other Emacs programs.
+
+* EVIL Mode
+ Use vim keybindings in emacs
+
+#+begin_src emacs-lisp
+(use-package evil
+  :ensure t
+  :init
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  (setq evil-vsplit-window-right t)
+  (setq evil-split-window-below t)
+  (evil-mode))
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+#+end_src
+
+* Theme
+  Xresources theme
+
+#+begin_src emacs-lisp
+(use-package xresources-theme
+  :ensure t)
+(add-hook 'after-init-hook (lambda () (load-theme 'xresources)))
+#+end_src
+
+* FONTS
+Setting some fonts
+  #+begin_src emacs-lisp
+
+(set-face-attribute 'default nil
+  :font "hack 11"
+  :weight 'medium)
+(set-face-attribute 'variable-pitch nil
+  :font "hack 11"
+  :weight 'medium)
+(set-face-attribute 'fixed-pitch nil
+  :font "hack 11"
+  :weight 'medium)
+(set-face-attribute 'font-lock-comment-face nil
+  :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+  :slant 'italic)
+(setq-default line-spacing 0.12)
+(add-to-list 'default-frame-alist '(font . "hack 11"))
+(setq global-prettify-symbols-mode t)
+
+  #+end_src
+
+* Zooming in and out
+
+  Zoom text in/out with C and +/-
+  #+begin_src emacs-lisp
+(global-set-key (kbd "C-=") "text-scale-increase")
+(global-set-key (kbd "C--") "text-scale-decrease")
+  #+end_src
+
+* GUI
+** menubar
+  #+begin_src emacs-lisp
+(menu-bar-mode -1)
+  #+end_src
+
+** toolbar
+  #+begin_src emacs-lisp
+(tool-bar-mode -1)
+  #+end_src
+** scrollbar
+  #+begin_src emacs-lisp
+(scroll-bar-mode -1)
+  #+end_src
+** line numbers
+
+  #+begin_src emacs-lisp
+    (global-display-line-numbers-mode 1)
+	(global-visual-line-mode t)
+  #+end_src
+
+  #+begin_src emacs-lisp
+   ;(setq mode-line-format nil)
+   ;(setq-default mode-line-format nil)
+  #+end_src
+* Org
+start folded
+#+begin_src emacs-lisp
+(setq org-startup-folded t)
+#+end_src
+** ORG bullets
+  give org mode fresh breath of air with bullets instead of *'s ugh
+
+  #+begin_src emacs-lisp
+  (use-package org-bullets
+  :ensure t)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+  #+end_src
+
+** Defining few things
+   #+begin_src emacs-lisp
+(add-hook 'org-mode-hook 'org-indent-mode)
+(setq org-directory "~/Org/"
+      org-agenda-files '("~/Org/agenda.org")
+      org-default-notes-file (expand-file-name "notes.org" org-directory)
+      org-ellipsis " ▼ "
+      org-log-done 'time
+      org-journal-dir "~/Org/journal/"
+      org-journal-date-format "%B %d, %Y (%A) "
+      org-journal-file-format "%Y-%m-%d.org"
+      org-hide-emphasis-markers t)
+(setq org-src-preserve-indentation nil
+      org-src-tab-acts-natively t
+      org-edit-src-content-indentation 0)
+   #+end_src
+** ORG Link abberivations
+   #+begin_src emacs-lisp
+;; An example of how this works.
+;; [[arch-wiki:Name_of_Page][Description]]
+(setq org-link-abbrev-alist    ; This overwrites the default Doom org-link-abbrev-list
+        '(("google" . "http://www.google.com/search?q=")
+          ("arch-wiki" . "https://wiki.archlinux.org/index.php/")
+          ("ddg" . "https://duckduckgo.com/?q=")
+          ("wiki" . "https://en.wikipedia.org/wiki/")))
+   #+end_src
+** ORG Todo Keywords
+   #+begin_src emacs-lisp
+(setq org-todo-keywords
+        '((sequence
+           "TODO"
+           "BLOG"
+           "GYM"
+           "PROJ"
+           "VIDEO"
+           "WAIT"
+           "|"                ; separate "active" states and "inactive" states
+           "DONE"
+           "CANCELLED" )))
+           #+end_src
+* Dashboard
+  #+begin_src emacs-lisp
+	(use-package projectile
+	 :ensure t
+	 :config
+	 (projectile-global-mode 1))
+	(use-package dashboard
+	  :init      ;; tweak dashboard config before loading it
+	  (setq dashboard-set-heading-icons t)
+	  (setq dashboard-set-file-icons t)
+	  (setq dashboard-set-footer nil)
+	  (setq dashboard-banner-logo-title "Emacs, good OS needs text editor.")
+	  ;;(setq dashboard-startup-banner 'logo) ;; use standard emacs logo as banner
+	  (setq dashboard-startup-banner "/home/andrija/.emacs.d/banner.png")  ;; use custom image as banner
+	  (setq dashboard-center-content t) ;; set to 'nil' for content on the left
+    (setq dashboard-footer-icon (all-the-icons-octicon "dashboard"
+						       :height 1.1
+						       :v-adjust -0.05
+						       :face 'font-lock-keyword-face))
+	  (setq dashboard-items nil)
+          (setq dashboard-week-agenda t)
+    (setq dashboard-footer-messages '("Dashboard is pretty cool!"))
+	  :config
+	  (dashboard-setup-startup-hook)
+	  (dashboard-modify-heading-icons '((recents . "file-text")
+				      (bookmarks . "book"))))
+#+end_src
+
+* Which key
+  #+begin_src emacs-lisp
+(use-package which-key :ensure t)
+(which-key-mode)
+  #+end_src
+* ORG source code block syntax highlight
+#+begin_src
+ (setq org-src-fontify-natively t
+    org-src-tab-acts-natively t
+    org-confirm-babel-evaluate nil
+    org-edit-src-content-indentation 0)
+#+end_src
+
+* Source Code Block Tag Expansion
+Org-tempo is a package that allows for '<s' followed by TAB to expand to a begin_src tag.  Other expansions available include:
+
+| Typing the below + TAB | Expands to ...                          |
+|------------------------+-----------------------------------------|
+| <a                     | '#+BEGIN_EXPORT ascii' … '#+END_EXPORT  |
+| <c                     | '#+BEGIN_CENTER' … '#+END_CENTER'       |
+| <C                     | '#+BEGIN_COMMENT' … '#+END_COMMENT'     |
+| <e                     | '#+BEGIN_EXAMPLE' … '#+END_EXAMPLE'     |
+| <E                     | '#+BEGIN_EXPORT' … '#+END_EXPORT'       |
+| <h                     | '#+BEGIN_EXPORT html' … '#+END_EXPORT'  |
+| <l                     | '#+BEGIN_EXPORT latex' … '#+END_EXPORT' |
+| <q                     | '#+BEGIN_QUOTE' … '#+END_QUOTE'         |
+| <s                     | '#+BEGIN_SRC' … '#+END_SRC'             |
+| <v                     | '#+BEGIN_VERSE' … '#+END_VERSE'         |
+
+#+begin_src emacs-lisp
+(use-package org-tempo
+  :ensure nil) ;; tell use-package not to try to install org-tempo since it's already there.
+#+end_src
+* Magit
+  #+begin_src emacs-lisp
+(use-package magit)
+(use-package magit-todos
+:config (magit-todos-mode))
+
+  #+end_src
+
+
+* Autocompletition
+#+begin_src emacs-lisp
+(use-package auto-complete)
+(ac-config-default)
+
+#+end_src
