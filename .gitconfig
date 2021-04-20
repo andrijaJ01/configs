@@ -1,0 +1,12 @@
+[user]
+	email = andrijajovanovic001@gmail.com
+	name = Andrijaj01
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
