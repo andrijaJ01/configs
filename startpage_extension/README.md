@@ -1,6 +1,6 @@
 # Screenshot of the startpage
 
-![Screenshot](preview.webp)
+![Screenshot](preview.png)
 
 # Important
 After generating the colors with pywal copy:
