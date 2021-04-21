@@ -20,6 +20,5 @@ pywalfox update
 pywal-discord 
 cp -v /home/andrija/.cache/wal/colors.css /home/andrija/configs/startpage_extension/src/colors.css
 
-#build homepage
 
 
