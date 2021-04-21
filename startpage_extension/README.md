@@ -7,7 +7,7 @@ After generating the colors with pywal copy:
 ```
 colors.css
 ```
-from /home/<USER>/.cache/wal src folder where index.html is located.
+from /home/\<USERNAME\>/.cache/wal src folder where index.html is located.
 
 __Main features:__
 - Search engine selection
