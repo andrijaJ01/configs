@@ -1,0 +1,8 @@
+#!/bin/sh
+set ssid='Matejic'
+set password='2670322mmm'
+wal -R &
+nmcli device wifi connect $ssid password $password&     
+./home/andrija/bar.sh
+picom &
+exec qtile
